@@ -1,0 +1,11 @@
+{
+    "welcomeTitle": "Welcome to Our App!",
+    "welcomeSubtitle": "Let's get started by setting up your account.",
+    "noAccountFound": "No existing account linked to this device.",
+    "chooseOption": "Please choose one of the following options to continue:",
+    "registerUsernamePassword": "Register with Username and Password",
+    "registerAnonymously": "Register Anonymously (Device only)",
+    "loginExisting": "Log In with Existing Account",
+    "actionRegister": "Register",
+    "actionLogin": "Log In"
+}

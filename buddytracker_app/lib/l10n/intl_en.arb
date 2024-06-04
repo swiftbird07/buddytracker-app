@@ -1,0 +1,23 @@
+{
+    "welcomeTitle": "Welcome to Our App!",
+    "welcomeSubtitle": "Let's get started by setting up your account.",
+    "noAccountFound": "No existing account linked to this device.",
+    "chooseOption": "Please choose one of the following options to continue:",
+    "registerUsernamePassword": "Register with Username and Password",
+    "registerAnonymously": "Register Anonymously (Device only)",
+    "loginExisting": "Log In with Existing Account",
+    "actionRegister": "Register",
+    "actionLogin": "Log In",
+    "registerTitle": "Register",
+    "usernameLabel": "Username",
+    "usernameHint": "Enter your username",
+    "passwordLabel": "Password",
+    "passwordHint": "Enter your password",
+    "registerButton": "Register",
+    "usernameError": "Username must be at least 4 characters",
+    "passwordError": "Password must be at least 7 characters",
+    "skipRegistration": "Skip Registration",
+    "skipRegistrationWarning": "Warning: You will not be able to access your account on other devices.",
+    "continueButton": "Continue",
+    "cancelButton": "Cancel"
+}
