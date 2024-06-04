@@ -19,6 +19,25 @@ class AuthService {
       body: jsonEncode(<String, String>{
         'email': email,
         'password': password,
+        'UDID': await getDeviceIdentifier(),
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      return json.decode(response.body)['token'];
+    } else {
+      return null;
+    }
+  }
+
+  Future<String?> loginUserAnonymous() async {
+    final response = await http.post(
+      Uri.parse('$_baseUrl/auth'), // "POST" to auth = login
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'UDID': await getDeviceIdentifier(),
       }),
     );
 
@@ -38,6 +57,7 @@ class AuthService {
       body: jsonEncode(<String, String>{
         'email': email,
         'password': password,
+        'UDID': await getDeviceIdentifier(),
       }),
     );
 
