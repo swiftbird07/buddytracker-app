@@ -8,11 +8,11 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_udid/flutter_udid.dart';
 
 class AuthService {
-  static const String _baseUrl = 'https://yourapi.com/api/v1/auth';
+  static const String _baseUrl = 'https://test.buddytracker.app/api/v1/';
 
   Future<String?> loginUserBasicAuth(String email, String password) async {
     final response = await http.post(
-      Uri.parse('$_baseUrl/loginUser'),
+      Uri.parse('$_baseUrl/auth'), // "POST" to auth = login
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -31,7 +31,7 @@ class AuthService {
 
   Future<String?> registerUserBasicAuth(String email, String password) async {
     final response = await http.post(
-      Uri.parse('$_baseUrl/registerUser'),
+      Uri.parse('$_baseUrl/user'), // "POST" a user = register
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -50,7 +50,7 @@ class AuthService {
 
     Future<String?> registerUserAnonymous(String email, String password) async {
     final response = await http.post(
-      Uri.parse('$_baseUrl/registerUser'),
+      Uri.parse('$_baseUrl/user'), // "POST" a user = register
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
