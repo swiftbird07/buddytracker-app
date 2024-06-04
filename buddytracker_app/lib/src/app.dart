@@ -8,8 +8,8 @@ import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
 
 /// The Widget that configures your application.
-class MyApp extends StatelessWidget {
-  const MyApp({
+class BuddytrackerApp extends StatelessWidget {
+  const BuddytrackerApp({
     super.key,
     required this.settingsController,
   });
@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: const [
             Locale('en', ''), // English, no country code
+            Locale('de', ''), // German, no country code
           ],
 
           // Use AppLocalizations to configure the correct application title
@@ -56,7 +57,9 @@ class MyApp extends StatelessWidget {
           // Define a light and dark color theme. Then, read the user's
           // preferred ThemeMode (light, dark, or system default) from the
           // SettingsController to display the correct theme.
-          theme: ThemeData(),
+          theme: ThemeData(
+            colorScheme: const ColorScheme.light(),
+          ),
           darkTheme: ThemeData.dark(),
           themeMode: settingsController.themeMode,
 

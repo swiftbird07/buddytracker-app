@@ -48,23 +48,20 @@ class SampleItemListView extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           final item = items[index];
 
-          return ListTile(
-            title: Text('Beispiel Nutzer ${item.id}'),
-            leading: const CircleAvatar(
-              // Display the Flutter Logo image asset.
-              foregroundImage: AssetImage('assets/images/flutter_logo.png'),
+          return Card(
+            child: ListTile(
+              title: Text('Nutzer ${item.id}'),
+              // When a user taps the ListTile, navigate to the DetailView.
+              onTap: () {
+                Navigator.restorablePushNamed(
+                  context,
+                  SampleItemDetailsView.routeName,
+                  arguments: item,
+                );
+              },
             ),
-            onTap: () {
-              // Navigate to the details page. If the user leaves and returns to
-              // the app after it has been killed while running in the
-              // background, the navigation stack is restored.
-              Navigator.restorablePushNamed(
-                context,
-                SampleItemDetailsView.routeName,
-              );
-            }
           );
-        },
+        },        
       ),
     );
   }
