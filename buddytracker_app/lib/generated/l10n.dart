@@ -90,10 +90,10 @@ class S {
     );
   }
 
-  /// `Register with Username and Password`
+  /// `Register New Account`
   String get registerUsernamePassword {
     return Intl.message(
-      'Register with Username and Password',
+      'Register New Account',
       name: 'registerUsernamePassword',
       desc: '',
       args: [],
@@ -435,6 +435,56 @@ class S {
     return Intl.message(
       'Dark Mode',
       name: 'settingTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message(
+      'Logout',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure?`
+  String get areYouSure {
+    return Intl.message(
+      'Are you sure?',
+      name: 'areYouSure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you really want to logout?`
+  String get logoutConfirmation {
+    return Intl.message(
+      'Do you really want to logout?',
+      name: 'logoutConfirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message(
+      'No',
+      name: 'no',
       desc: '',
       args: [],
     );

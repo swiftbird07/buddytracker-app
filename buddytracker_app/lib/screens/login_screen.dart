@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'register_screen.dart';
 import '../generated/l10n.dart';
 import '../services/database_helper.dart';
+import '../services/auth_service.dart';
+import 'main_screen.dart';
+import 'package:logger/logger.dart';
+
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -10,8 +14,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TokenStorage _tokenStorage = TokenStorage();
   String? currentServer;
   final dbHelper = DatabaseHelper.instance;
+  var logger = Logger(
+    printer: PrettyPrinter(), // Use the pretty printer for better log readability
+  );
 
   @override
   void initState() {
@@ -40,6 +48,46 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  void _skipRegistration() async {
+    Navigator.of(context).pop();  // Close the dialog first
+    // Recreate _authService to ensure the latest server URL is used
+    final AuthService _authService = AuthService();
+
+    String? token = await _authService.registerUserAnonymous();
+    if (token != null) {
+      String? loginToken = await _authService.loginUserAnonymous();
+      if (loginToken != null) {
+        // If registration and login are successful, save the token and navigate to the main screen
+        await _tokenStorage.saveToken(token);
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MainScreen()),
+        );
+      } else {
+        _showError("Failed to log in.");
+      }
+    } else {
+      _showError("Failed to register.");
+    }
+  }
+
+  void _showError(String message) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text("Error"),
+        content: Text(message),
+        actions: <Widget>[
+          TextButton(
+            child: Text("OK"),
+            onPressed: () => Navigator.of(ctx).pop(),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
@@ -58,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 20), // Welcome
                   Text(
                     s.welcomeSubtitle,
                     textAlign: TextAlign.center,
@@ -66,24 +114,32 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    s.noAccountFound,
+                    s.noAccountFound, // "No account found"
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    s.chooseOption,
+                    s.chooseOption, // "Choose an option below"
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                   ),
                   const SizedBox(height: 24),
-                  ElevatedButton.icon(
+                  ElevatedButton.icon( // Login with existing account
+                    icon: const Icon(Icons.login),
+                    label: Text(s.loginExisting),
+                    onPressed: () {
+                      // Implement login function
+                    },
+                  ),
+                  const SizedBox(height: 24),
+                  ElevatedButton.icon( // Register with username and password
                     icon: const Icon(Icons.person_add),
                     label: Text(s.registerUsernamePassword),
                     onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen())),
                   ),
                   const SizedBox(height: 24),
-                  ElevatedButton.icon(
+                  ElevatedButton.icon( // Skip registration
                     icon: const Icon(Icons.skip_next),
                     label: Text(s.skipRegistration),
                     onPressed: () {
@@ -95,9 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           actions: <Widget>[
                             TextButton(
                               child: Text(s.continueButton),
-                              onPressed: () {
-                                Navigator.of(ctx).pop();
-                              },
+                              onPressed: _skipRegistration
                             ),
                             TextButton(
                               child: Text(s.cancelButton),
@@ -110,17 +164,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     },
                   ),
-                  const SizedBox(height: 24),
-                  ElevatedButton.icon(
-                    icon: const Icon(Icons.login),
-                    label: Text(s.loginExisting),
-                    onPressed: () {
-                      // Implement login function
-                    },
-                  ),
                   // "Using Server X" Text
                   const SizedBox(height: 24),
-                  RichText(
+                  RichText( // Change server URL
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       style: TextStyle(fontSize: 16, color: Colors.grey[600]), // Default text style

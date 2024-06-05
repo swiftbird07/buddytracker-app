@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "actionLogin": MessageLookupByLibrary.simpleMessage("Log In"),
         "actionRegister": MessageLookupByLibrary.simpleMessage("Register"),
+        "areYouSure": MessageLookupByLibrary.simpleMessage("Are you sure?"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
         "changeServerLink": MessageLookupByLibrary.simpleMessage("Change"),
         "changeServerTitle":
@@ -43,6 +44,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "customServerLabel": MessageLookupByLibrary.simpleMessage("Server URL"),
         "loginExisting": MessageLookupByLibrary.simpleMessage(
             "Log In with Existing Account"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "logoutConfirmation": MessageLookupByLibrary.simpleMessage(
+            "Do you really want to logout?"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "noAccountFound": MessageLookupByLibrary.simpleMessage(
             "No existing account linked to this device."),
         "officialServer":
@@ -62,8 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Register Anonymously (Device only)"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
-        "registerUsernamePassword": MessageLookupByLibrary.simpleMessage(
-            "Register with Username and Password"),
+        "registerUsernamePassword":
+            MessageLookupByLibrary.simpleMessage("Register New Account"),
         "saveButton": MessageLookupByLibrary.simpleMessage("Save"),
         "settingNotifications":
             MessageLookupByLibrary.simpleMessage("Notifications"),
@@ -84,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcomeSubtitle": MessageLookupByLibrary.simpleMessage(
             "Let\'s get started by setting up your account."),
         "welcomeTitle":
-            MessageLookupByLibrary.simpleMessage("Welcome to Buddy Tracker!")
+            MessageLookupByLibrary.simpleMessage("Welcome to Buddy Tracker!"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

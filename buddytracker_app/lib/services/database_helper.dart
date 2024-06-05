@@ -1,6 +1,8 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
+import '../generated/l10n.dart';  // Localization
+
 
 class DatabaseHelper {
   static const _dbName = 'app.db';
@@ -110,6 +112,7 @@ class DatabaseHelper {
 
   // Reads the first server name entry (assumes only one entry).
   Future<String?> getServerName() async {
+    S s = S();
     Database db = await instance.database;
     await _ensureTableExists(db);  // Ensure table exists before querying
 
@@ -119,6 +122,12 @@ class DatabaseHelper {
     if (maps.isNotEmpty) {
       return maps.first[columnServerURL] as String?;
     }
-    return null;
+    return s.officialServer;
+  }
+
+  // Delete all rows
+  Future<int> deleteAll() async {
+    Database db = await instance.database;
+    return await db.delete(_tableAppSettings);
   }
 }

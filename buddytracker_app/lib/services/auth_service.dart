@@ -4,36 +4,44 @@ import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_udid/flutter_udid.dart';
 import '../services/database_helper.dart';  // Database operations
+import 'package:logger/logger.dart';
 import '../generated/l10n.dart';  // Localization
+
 
 
 class AuthService {
     final DatabaseHelper dbHelper = DatabaseHelper.instance;
-    late final String _baseUrl;
-    late final String _userAgent;
+    late final String _userAgent = 'BuddyTrackerApp/0.1.0';
+    S s = S();
+    var logger = Logger(
+      printer: PrettyPrinter(), // Use the pretty printer for better log readability
+    );
 
-    AuthService() {
-      _initializeAsync();
+    Future<String> _getDynamicURL() async {
+      String? serverUrl = await dbHelper.getServerName();
+      if (serverUrl == null) {
+        throw Exception("Server URL not found");
+      }
+
+      // Translate the name of the official (dev) server to the actual URL
+      if (serverUrl == s.officialServer) {
+        return s.officialServerURL;
+      } else if (serverUrl == s.officialServerDev) {
+        return s.officialServerDevURL;
+      }
+
+      // If the server name is not the official server, return the server URL as is
+      return serverUrl+'/api/v1';
     }
 
-    void _initializeAsync() async {
-      _baseUrl = (await getURL())!;
-      _userAgent = 'BuddyTracker/' + getBuildVersion();
-    }
 
-    Future<String?> getURL() async {
-      return await dbHelper.getServerName();
-    }
-
-    String getBuildVersion() {
-      return "0.1.0"; // TODO: Get this from the build configuration
-    }
-
-    Future<String?> loginUserBasicAuth(String email, String password) async {
+  Future<String?> loginUserBasicAuth(String email, String password) async {
+    String baseUrl = await _getDynamicURL();
     final response = await http.post(
-      Uri.parse('$_baseUrl/auth'), // "POST" to auth = login
+      Uri.parse('$baseUrl/auth'), // "POST" to auth = login
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
+        'User-Agent': _userAgent,
       },
       body: jsonEncode(<String, String>{
         'email': email,
@@ -45,15 +53,18 @@ class AuthService {
     if (response.statusCode == 200) {
       return json.decode(response.body)['token'];
     } else {
+      logger.e('Failed to login user: ${response.body}');
       return null;
     }
   }
 
   Future<String?> loginUserAnonymous() async {
+    String baseUrl = await _getDynamicURL();
     final response = await http.post(
-      Uri.parse('$_baseUrl/auth'), // "POST" to auth = login
+      Uri.parse('$baseUrl/auth'), // "POST" to auth = login
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
+        'User-Agent': _userAgent,
       },
       body: jsonEncode(<String, String>{
         'UDID': await getDeviceIdentifier(),
@@ -63,15 +74,18 @@ class AuthService {
     if (response.statusCode == 200) {
       return json.decode(response.body)['token'];
     } else {
+      logger.e('Failed to login user: ${response.body}');
       return null;
     }
   }
 
   Future<String?> registerUserBasicAuth(String email, String password) async {
+    String baseUrl = await _getDynamicURL();
     final response = await http.post(
-      Uri.parse('$_baseUrl/user'), // "POST" a user = register
+      Uri.parse('$baseUrl/user'), // "POST" a user = register
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
+        'User-Agent': _userAgent,
       },
       body: jsonEncode(<String, String>{
         'email': email,
@@ -83,26 +97,37 @@ class AuthService {
     if (response.statusCode == 200) {
       return json.decode(response.body)['token'];
     } else {
+      logger.e('Failed to register user: ${response.body}. Status code: ${response.statusCode}');
       return null;
     }
   }
 
-    Future<String?> registerUserAnonymous(String email, String password) async {
-    final response = await http.post(
-      Uri.parse('$_baseUrl/user'), // "POST" a user = register
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        'UDID': await getDeviceIdentifier(),
-      }),
-    );
+    Future<String?> registerUserAnonymous() async {
+      String baseUrl = await _getDynamicURL();
+      logger.d(baseUrl);
+      try {
+        final response = await http.post(
+          Uri.parse('$baseUrl/user'), // "POST" a user = register
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'User-Agent': _userAgent,
+          },
+          body: jsonEncode(<String, String>{
+            'UDID': await getDeviceIdentifier(),
+          }),
+        );
 
-    if (response.statusCode == 200) {
-      return json.decode(response.body)['token'];
-    } else {
-      return null;
-    }
+        if (response.statusCode == 200) {
+          return json.decode(response.body)['token'];
+        } else {
+          logger.e('Failed to register user: ${response.body}. Status code: ${response.statusCode}');
+          return null;
+        }
+      }
+      catch (e) {
+        logger.e('Failed to register user: $e');
+        return null;
+      }
   }
 
 
@@ -121,5 +146,9 @@ class TokenStorage  {
 
   Future<String?> getToken() async {
   return await _storage.read(key: 'auth_token');
+  }
+
+  Future<void> deleteToken() async {
+  await _storage.delete(key: 'auth_token');
   }
 }

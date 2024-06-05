@@ -3,7 +3,7 @@
     "welcomeSubtitle": "Let's get started by setting up your account.",
     "noAccountFound": "No existing account linked to this device.",
     "chooseOption": "Please choose one of the following options to continue:",
-    "registerUsernamePassword": "Register with Username and Password",
+    "registerUsernamePassword": "Register New Account",
     "registerAnonymously": "Register Anonymously (Device only)",
     "loginExisting": "Log In with Existing Account",
     "actionRegister": "Register",
@@ -37,5 +37,10 @@
     "saveButton": "Save",
     "cancelButton": "Cancel",
     "settingNotifications": "Notifications",
-    "settingTheme": "Dark Mode"
+    "settingTheme": "Dark Mode",
+    "logout": "Logout",
+    "areYouSure": "Are you sure?",
+    "logoutConfirmation": "Do you really want to logout?",
+    "yes": "Yes",
+    "no": "No"
 }

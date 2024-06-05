@@ -26,6 +26,7 @@ dependencies:
   sqflite:
   path_provider:
   path:
+  logger:
 
 dev_dependencies:
   flutter_test:

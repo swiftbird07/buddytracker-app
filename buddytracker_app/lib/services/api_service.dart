@@ -11,7 +11,11 @@ class ApiService {
   Future<bool> testServerConnection(String serverUrl) async {
     try {
       final response = await http.get(
-          Uri.parse('$serverUrl/api/v1/serverinfo'));
+          Uri.parse('$serverUrl/api/v1/serverinfo'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'User-Agent': 'BuddyTracker/0.1.0',
+          });
       return response.statusCode == 200;
     } catch (e) {
       return false; // Return false on exception/error
