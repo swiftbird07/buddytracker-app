@@ -25,13 +25,34 @@ class MessageLookup extends MessageLookupByLibrary {
         "actionLogin": MessageLookupByLibrary.simpleMessage("Log In"),
         "actionRegister": MessageLookupByLibrary.simpleMessage("Register"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "changeServerLink": MessageLookupByLibrary.simpleMessage("Change"),
+        "changeServerTitle":
+            MessageLookupByLibrary.simpleMessage("Change Server"),
         "chooseOption": MessageLookupByLibrary.simpleMessage(
             "Please choose one of the following options to continue:"),
+        "connectionFailed": MessageLookupByLibrary.simpleMessage(
+            "Connection failed. Please check the server URL and try again."),
+        "connectionFailedTitle":
+            MessageLookupByLibrary.simpleMessage("Connection failed."),
+        "connectionSuccess":
+            MessageLookupByLibrary.simpleMessage("Connection successful!"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
+        "customServer": MessageLookupByLibrary.simpleMessage("Custom Server"),
+        "customServerHint": MessageLookupByLibrary.simpleMessage(
+            "https://yourcustomserver.com"),
+        "customServerLabel": MessageLookupByLibrary.simpleMessage("Server URL"),
         "loginExisting": MessageLookupByLibrary.simpleMessage(
             "Log In with Existing Account"),
         "noAccountFound": MessageLookupByLibrary.simpleMessage(
             "No existing account linked to this device."),
+        "officialServer":
+            MessageLookupByLibrary.simpleMessage("Official Server"),
+        "officialServerDev": MessageLookupByLibrary.simpleMessage(
+            "Official Server (Development Branch)"),
+        "officialServerDevURL": MessageLookupByLibrary.simpleMessage(
+            "https://dev.buddytracker.app"),
+        "officialServerURL":
+            MessageLookupByLibrary.simpleMessage("https://buddytracker.app"),
         "passwordError": MessageLookupByLibrary.simpleMessage(
             "Password must be at least 7 characters"),
         "passwordHint":
@@ -43,18 +64,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
         "registerUsernamePassword": MessageLookupByLibrary.simpleMessage(
             "Register with Username and Password"),
+        "saveButton": MessageLookupByLibrary.simpleMessage("Save"),
+        "settingNotifications":
+            MessageLookupByLibrary.simpleMessage("Notifications"),
+        "settingTheme": MessageLookupByLibrary.simpleMessage("Dark Mode"),
         "skipRegistration":
             MessageLookupByLibrary.simpleMessage("Skip Registration"),
         "skipRegistrationWarning": MessageLookupByLibrary.simpleMessage(
             "Warning: You will not be able to access your account on other devices."),
+        "testingConnection": MessageLookupByLibrary.simpleMessage(
+            "Testing connection to server..."),
         "usernameError": MessageLookupByLibrary.simpleMessage(
             "Username must be at least 4 characters"),
         "usernameHint":
             MessageLookupByLibrary.simpleMessage("Enter your username"),
         "usernameLabel": MessageLookupByLibrary.simpleMessage("Username"),
+        "usingServerBegin": MessageLookupByLibrary.simpleMessage("Using"),
+        "usingServerEnd": MessageLookupByLibrary.simpleMessage("as backend."),
         "welcomeSubtitle": MessageLookupByLibrary.simpleMessage(
             "Let\'s get started by setting up your account."),
         "welcomeTitle":
-            MessageLookupByLibrary.simpleMessage("Welcome to Our App!")
+            MessageLookupByLibrary.simpleMessage("Welcome to Buddy Tracker!")
       };
 }

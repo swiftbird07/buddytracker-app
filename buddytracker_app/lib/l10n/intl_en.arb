@@ -1,5 +1,5 @@
 {
-    "welcomeTitle": "Welcome to Our App!",
+    "welcomeTitle": "Welcome to Buddy Tracker!",
     "welcomeSubtitle": "Let's get started by setting up your account.",
     "noAccountFound": "No existing account linked to this device.",
     "chooseOption": "Please choose one of the following options to continue:",
@@ -18,6 +18,24 @@
     "passwordError": "Password must be at least 7 characters",
     "skipRegistration": "Skip Registration",
     "skipRegistrationWarning": "Warning: You will not be able to access your account on other devices.",
+    "usingServerBegin": "Using",
+    "officialServer": "Official Server",
+    "officialServerURL": "https://buddytracker.app",
+    "officialServerDev": "Official Server (Development Branch)",
+    "officialServerDevURL": "https://dev.buddytracker.app",
+    "customServer": "Custom Server",
+    "customServerLabel": "Server URL",
+    "customServerHint": "https://yourcustomserver.com",
+    "usingServerEnd": "as backend.",
+    "changeServerLink": "Change",
+    "changeServerTitle": "Change Server",
+    "testingConnection": "Testing connection to server...",
+    "connectionFailedTitle": "Connection failed.",
+    "connectionFailed": "Connection failed. Please check the server URL and try again.",
+    "connectionSuccess": "Connection successful!",
     "continueButton": "Continue",
-    "cancelButton": "Cancel"
+    "saveButton": "Save",
+    "cancelButton": "Cancel",
+    "settingNotifications": "Notifications",
+    "settingTheme": "Dark Mode"
 }

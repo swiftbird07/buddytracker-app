@@ -50,10 +50,10 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Welcome to Our App!`
+  /// `Welcome to Buddy Tracker!`
   String get welcomeTitle {
     return Intl.message(
-      'Welcome to Our App!',
+      'Welcome to Buddy Tracker!',
       name: 'welcomeTitle',
       desc: '',
       args: [],
@@ -240,6 +240,156 @@ class S {
     );
   }
 
+  /// `Using`
+  String get usingServerBegin {
+    return Intl.message(
+      'Using',
+      name: 'usingServerBegin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Official Server`
+  String get officialServer {
+    return Intl.message(
+      'Official Server',
+      name: 'officialServer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `https://buddytracker.app`
+  String get officialServerURL {
+    return Intl.message(
+      'https://buddytracker.app',
+      name: 'officialServerURL',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Official Server (Development Branch)`
+  String get officialServerDev {
+    return Intl.message(
+      'Official Server (Development Branch)',
+      name: 'officialServerDev',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `https://dev.buddytracker.app`
+  String get officialServerDevURL {
+    return Intl.message(
+      'https://dev.buddytracker.app',
+      name: 'officialServerDevURL',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Custom Server`
+  String get customServer {
+    return Intl.message(
+      'Custom Server',
+      name: 'customServer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Server URL`
+  String get customServerLabel {
+    return Intl.message(
+      'Server URL',
+      name: 'customServerLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `https://yourcustomserver.com`
+  String get customServerHint {
+    return Intl.message(
+      'https://yourcustomserver.com',
+      name: 'customServerHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `as backend.`
+  String get usingServerEnd {
+    return Intl.message(
+      'as backend.',
+      name: 'usingServerEnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change`
+  String get changeServerLink {
+    return Intl.message(
+      'Change',
+      name: 'changeServerLink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Server`
+  String get changeServerTitle {
+    return Intl.message(
+      'Change Server',
+      name: 'changeServerTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Testing connection to server...`
+  String get testingConnection {
+    return Intl.message(
+      'Testing connection to server...',
+      name: 'testingConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection failed.`
+  String get connectionFailedTitle {
+    return Intl.message(
+      'Connection failed.',
+      name: 'connectionFailedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection failed. Please check the server URL and try again.`
+  String get connectionFailed {
+    return Intl.message(
+      'Connection failed. Please check the server URL and try again.',
+      name: 'connectionFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection successful!`
+  String get connectionSuccess {
+    return Intl.message(
+      'Connection successful!',
+      name: 'connectionSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Continue`
   String get continueButton {
     return Intl.message(
@@ -250,11 +400,41 @@ class S {
     );
   }
 
+  /// `Save`
+  String get saveButton {
+    return Intl.message(
+      'Save',
+      name: 'saveButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Cancel`
   String get cancelButton {
     return Intl.message(
       'Cancel',
       name: 'cancelButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notifications`
+  String get settingNotifications {
+    return Intl.message(
+      'Notifications',
+      name: 'settingNotifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark Mode`
+  String get settingTheme {
+    return Intl.message(
+      'Dark Mode',
+      name: 'settingTheme',
       desc: '',
       args: [],
     );

@@ -1,16 +1,35 @@
 // lib/services/auth_service.dart
-import 'dart:io';
-import 'dart:math';
-
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_udid/flutter_udid.dart';
+import '../services/database_helper.dart';  // Database operations
+import '../generated/l10n.dart';  // Localization
+
 
 class AuthService {
-  static const String _baseUrl = 'https://test.buddytracker.app/api/v1/';
+    final DatabaseHelper dbHelper = DatabaseHelper.instance;
+    late final String _baseUrl;
+    late final String _userAgent;
 
-  Future<String?> loginUserBasicAuth(String email, String password) async {
+    AuthService() {
+      _initializeAsync();
+    }
+
+    void _initializeAsync() async {
+      _baseUrl = (await getURL())!;
+      _userAgent = 'BuddyTracker/' + getBuildVersion();
+    }
+
+    Future<String?> getURL() async {
+      return await dbHelper.getServerName();
+    }
+
+    String getBuildVersion() {
+      return "0.1.0"; // TODO: Get this from the build configuration
+    }
+
+    Future<String?> loginUserBasicAuth(String email, String password) async {
     final response = await http.post(
       Uri.parse('$_baseUrl/auth'), // "POST" to auth = login
       headers: <String, String>{

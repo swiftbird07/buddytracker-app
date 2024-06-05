@@ -14,15 +14,18 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  flutter_map: ^7.0.0
-  flutter_map_cancellable_tile_provider: ^3.0.0-dev.1
-  latlong2: ^0.9.1
+  flutter_map:
+  flutter_map_cancellable_tile_provider:
+  latlong2:
   http:
   flutter_secure_storage: 
   device_info_plus:
   flutter_udid:
   intl_utils:
   intl:
+  sqflite:
+  path_provider:
+  path:
 
 dev_dependencies:
   flutter_test:
