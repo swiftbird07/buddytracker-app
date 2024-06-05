@@ -94,7 +94,7 @@ class AuthService {
 }
 
 class TokenStorage  {
-  final _storage = FlutterSecureStorage();
+  final _storage = const FlutterSecureStorage();
 
   Future<void> saveToken(String token) async {
   await _storage.write(key: 'auth_token', value: token);

@@ -6,8 +6,8 @@ class SettingsScreen extends StatelessWidget {
     return ListView(
       children: <Widget>[
         ListTile(
-          leading: Icon(Icons.light_mode),
-          title: Text('Dunkles Thema'),
+          leading: const Icon(Icons.light_mode),
+          title: const Text('Dunkles Thema'),
           trailing: Switch(
             value: true,
             onChanged: (bool value) {
@@ -16,8 +16,8 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
         ListTile(
-          leading: Icon(Icons.notifications),
-          title: Text('Benachrichtigungen'),
+          leading: const Icon(Icons.notifications),
+          title: const Text('Benachrichtigungen'),
           trailing: Switch(
             value: false,
             onChanged: (bool value) {

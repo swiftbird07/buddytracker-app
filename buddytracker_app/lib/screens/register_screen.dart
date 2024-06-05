@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../generated/l10n.dart'; // Adjust the path based on your project structure
 
 class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
 }
@@ -32,16 +34,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
       body: Center(
         child: Card(
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
           child: SingleChildScrollView(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Form(
               key: _formKey,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   TextFormField(
-                    key: ValueKey('username'),
+                    key: const ValueKey('username'),
                     validator: (value) {
                       if (value!.isEmpty || value.length < 4) {
                         return s.usernameError;
@@ -57,7 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                   ),
                   TextFormField(
-                    key: ValueKey('password'),
+                    key: const ValueKey('password'),
                     validator: (value) {
                       if (value!.isEmpty || value.length < 7) {
                         return s.passwordError;
@@ -73,10 +75,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       _password = value!;
                     },
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   ElevatedButton(
-                    child: Text(s.registerButton),
                     onPressed: _trySubmit,
+                    child: Text(s.registerButton),
                   ),
                 ],
               ),

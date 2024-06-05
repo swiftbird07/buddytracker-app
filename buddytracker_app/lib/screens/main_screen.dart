@@ -5,6 +5,8 @@ import 'map_screen.dart';
 import 'settings_screen.dart';
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -13,7 +15,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _children = [
-    BuddyListScreen(),
+    const BuddyListScreen(),
     MapScreen(),
     SettingsScreen(),
   ];
@@ -22,7 +24,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Buddy Tracker'),
+        title: const Text('Buddy Tracker'),
       ),
       body: _children[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -51,7 +53,7 @@ class _MainScreenState extends State<MainScreen> {
         onPressed: () {
           // ToDo: Implement add buddy
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

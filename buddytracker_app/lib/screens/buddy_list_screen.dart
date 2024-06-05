@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 
 class BuddyListScreen extends StatelessWidget {
+  const BuddyListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final List<String> buddies = ['Alice', 'Bob', 'Charlie'];
@@ -14,9 +16,9 @@ class BuddyListScreen extends StatelessWidget {
             child: Text(buddies[index][0]), // Erster Buchstabe des Namens
           ),
           title: Text(buddies[index]),
-          subtitle: Text('Status: Online'),  // Beispiel-Status
+          subtitle: const Text('Status: Online'),  // Beispiel-Status
           trailing: IconButton(
-            icon: Icon(Icons.message),
+            icon: const Icon(Icons.message),
             onPressed: () {
               // ToDo: Implement buddy interaction
             },

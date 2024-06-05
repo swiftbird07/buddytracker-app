@@ -3,6 +3,8 @@ import 'register_screen.dart';
 import '../generated/l10n.dart';
 
 class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
@@ -11,7 +13,7 @@ class LoginScreen extends StatelessWidget {
         title: Text(s.welcomeTitle),
         actions: [
           IconButton(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             onPressed: () {
               // Functionality to change backend server
             },
@@ -28,33 +30,33 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Text(
                     s.welcomeSubtitle,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Text(
                     s.noAccountFound,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     s.chooseOption,
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   ElevatedButton.icon(
-                    icon: Icon(Icons.person_add),
+                    icon: const Icon(Icons.person_add),
                     label: Text(s.registerUsernamePassword),
                     onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen())),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   ElevatedButton.icon(
-                    icon: Icon(Icons.skip_next),
+                    icon: const Icon(Icons.skip_next),
                     label: Text(s.skipRegistration),
                     onPressed: () {
                       showDialog(
@@ -80,9 +82,9 @@ class LoginScreen extends StatelessWidget {
                       );
                     },
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   ElevatedButton.icon(
-                    icon: Icon(Icons.login),
+                    icon: const Icon(Icons.login),
                     label: Text(s.loginExisting),
                     onPressed: () {
                       // Implement login function

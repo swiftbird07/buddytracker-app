@@ -1,13 +1,14 @@
 // main.dart
 import 'package:buddytracker_app/screens/main_screen.dart';
 import 'package:flutter/material.dart';
-import 'screens/login_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
 
 void main() => runApp(BuddyTrackerApp());
 
 class BuddyTrackerApp extends StatelessWidget {
+  const BuddyTrackerApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,7 +25,7 @@ class BuddyTrackerApp extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       //home: LoginScreen(),
-      home: MainScreen(),
+      home: const MainScreen(),
     );
   }
 }
