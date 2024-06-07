@@ -65,6 +65,8 @@ var logger = Logger(
               'activities': status['activities'],
               "location": status['location'],
               "location_accuracy": status['location_accuracy'],
+              "last_updated": status['last_updated'],
+              "expires_at": status['expires_at'], // unix timestamp when the status expires
             });
           } else {
             // Handle the error case where status couldn't be retrieved
