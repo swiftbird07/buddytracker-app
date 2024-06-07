@@ -489,6 +489,26 @@ class S {
       args: [],
     );
   }
+
+  /// `No buddies found - how sad! 😢 \n\nTry adding some by clicking the '+' button below.`
+  String get noBuddiesFoundList {
+    return Intl.message(
+      'No buddies found - how sad! 😢 \n\nTry adding some by clicking the \'+\' button below.',
+      name: 'noBuddiesFoundList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Oh no something went wrong 😱\n\nCould not connect to the server. Please try again later.`
+  String get errorApiConnection {
+    return Intl.message(
+      'Oh no something went wrong 😱\n\nCould not connect to the server. Please try again later.',
+      name: 'errorApiConnection',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

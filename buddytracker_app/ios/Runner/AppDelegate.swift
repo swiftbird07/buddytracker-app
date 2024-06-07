@@ -7,7 +7,7 @@ import UIKit
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    GeneratedPluginRegistrant.register(with: self)
+    GeneratedPluginRegistrant.register(winoBuddiesFoundListhttps://35c04cee-f439-434b-8d07-bb77eb96e752.mock.pstmn.ioth: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }

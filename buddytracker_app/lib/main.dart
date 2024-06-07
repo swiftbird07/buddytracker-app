@@ -11,6 +11,8 @@ void main() => runApp(BuddyTrackerApp());
 class BuddyTrackerApp extends StatelessWidget {
   final TokenStorage _tokenStorage = TokenStorage();
 
+  BuddyTrackerApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,12 +33,12 @@ class BuddyTrackerApp extends StatelessWidget {
         future: _tokenStorage.getToken(),
         builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator(); // Or some other loading indicator
+            return const CircularProgressIndicator(); // Or some other loading indicator
           } else {
             if (snapshot.hasData && snapshot.data != null) {
-              return MainScreen(); // User is already logged in
+              return const MainScreen(); // User is already logged in
             } else {
-              return LoginScreen(); // No token found, user needs to login or register
+              return const LoginScreen(); // No token found, user needs to login or register
             }
           }
         },

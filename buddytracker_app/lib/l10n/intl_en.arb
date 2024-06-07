@@ -42,5 +42,7 @@
     "areYouSure": "Are you sure?",
     "logoutConfirmation": "Do you really want to logout?",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "noBuddiesFoundList": "No buddies found - how sad! 😢 \n\nTry adding some by clicking the '+' button below.",
+    "errorApiConnection": "Oh no something went wrong 😱\n\nCould not connect to the server. Please try again later."
 }

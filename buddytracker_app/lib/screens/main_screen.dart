@@ -16,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _children = [
     const BuddyListScreen(),
-    MapScreen(),
+    const MapScreen(),
     SettingsScreen(),
   ];
 

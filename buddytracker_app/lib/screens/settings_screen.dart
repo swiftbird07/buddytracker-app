@@ -8,6 +8,8 @@ class SettingsScreen extends StatelessWidget {
   final DatabaseHelper dbHelper = DatabaseHelper.instance;
   final TokenStorage tokenStorage = TokenStorage();
 
+  SettingsScreen({super.key});
+
   void showLogoutConfirmation(BuildContext context) {
     final s = S.of(context);
     showDialog(
@@ -37,12 +39,13 @@ class SettingsScreen extends StatelessWidget {
   }
 
   Future<void> performLogout(BuildContext context) async {
+    // TODO: DELETE to logout endpoint to invalidate the token
     await dbHelper.deleteAll();
     await tokenStorage.deleteToken();
     // Go to "LoginScreen"
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => LoginScreen()),
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
     );  }
 
   @override
@@ -73,7 +76,7 @@ class SettingsScreen extends StatelessWidget {
         ),
         ListTile(
           leading: const Icon(Icons.exit_to_app, color: Colors.red),
-          title: Text(s.logout, style: TextStyle(color: Colors.red)),
+          title: Text(s.logout, style: const TextStyle(color: Colors.red)),
           onTap: () => showLogoutConfirmation(context),
         ),
       ],

@@ -17,7 +17,7 @@ class AuthService {
       printer: PrettyPrinter(), // Use the pretty printer for better log readability
     );
 
-    Future<String> _getDynamicURL() async {
+    Future<String> getDynamicURL() async {
       String? serverUrl = await dbHelper.getServerName();
       if (serverUrl == null) {
         throw Exception("Server URL not found");
@@ -31,12 +31,12 @@ class AuthService {
       }
 
       // If the server name is not the official server, return the server URL as is
-      return serverUrl+'/api/v1';
+      return '$serverUrl/api/v1';
     }
 
 
   Future<String?> loginUserBasicAuth(String email, String password) async {
-    String baseUrl = await _getDynamicURL();
+    String baseUrl = await getDynamicURL();
     final response = await http.post(
       Uri.parse('$baseUrl/auth'), // "POST" to auth = login
       headers: <String, String>{
@@ -59,7 +59,7 @@ class AuthService {
   }
 
   Future<String?> loginUserAnonymous() async {
-    String baseUrl = await _getDynamicURL();
+    String baseUrl = await getDynamicURL();
     final response = await http.post(
       Uri.parse('$baseUrl/auth'), // "POST" to auth = login
       headers: <String, String>{
@@ -80,7 +80,7 @@ class AuthService {
   }
 
   Future<String?> registerUserBasicAuth(String email, String password) async {
-    String baseUrl = await _getDynamicURL();
+    String baseUrl = await getDynamicURL();
     final response = await http.post(
       Uri.parse('$baseUrl/user'), // "POST" a user = register
       headers: <String, String>{
@@ -103,7 +103,7 @@ class AuthService {
   }
 
     Future<String?> registerUserAnonymous() async {
-      String baseUrl = await _getDynamicURL();
+      String baseUrl = await getDynamicURL();
       logger.d(baseUrl);
       try {
         final response = await http.post(

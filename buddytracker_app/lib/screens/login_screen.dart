@@ -9,6 +9,8 @@ import 'package:logger/logger.dart';
 
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   State<StatefulWidget> createState() => _LoginScreenState();
 }
@@ -51,18 +53,18 @@ class _LoginScreenState extends State<LoginScreen> {
   void _skipRegistration() async {
     Navigator.of(context).pop();  // Close the dialog first
     // Recreate _authService to ensure the latest server URL is used
-    final AuthService _authService = AuthService();
+    final AuthService authService = AuthService();
 
-    String? token = await _authService.registerUserAnonymous();
+    String? token = await authService.registerUserAnonymous();
     if (token != null) {
-      String? loginToken = await _authService.loginUserAnonymous();
+      String? loginToken = await authService.loginUserAnonymous();
       if (loginToken != null) {
         // If registration and login are successful, save the token and navigate to the main screen
         await _tokenStorage.saveToken(token);
 
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => MainScreen()),
+          MaterialPageRoute(builder: (context) => const MainScreen()),
         );
       } else {
         _showError("Failed to log in.");
@@ -76,11 +78,11 @@ class _LoginScreenState extends State<LoginScreen> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text("Error"),
+        title: const Text("Error"),
         content: Text(message),
         actions: <Widget>[
           TextButton(
-            child: Text("OK"),
+            child: const Text("OK"),
             onPressed: () => Navigator.of(ctx).pop(),
           ),
         ],
@@ -94,9 +96,9 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(s.welcomeTitle),
-        //backgroundColor: Colors.deepOrangeAccent,
+        backgroundColor: Colors.white,
       ),
-      backgroundColor: Colors.grey[200], 
+      backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
@@ -136,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ElevatedButton.icon( // Register with username and password
                     icon: const Icon(Icons.person_add),
                     label: Text(s.registerUsernamePassword),
-                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen())),
+                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterScreen())),
                   ),
                   const SizedBox(height: 24),
                   ElevatedButton.icon( // Skip registration
@@ -150,8 +152,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           content: Text(s.skipRegistrationWarning),
                           actions: <Widget>[
                             TextButton(
-                              child: Text(s.continueButton),
-                              onPressed: _skipRegistration
+                              onPressed: _skipRegistration,
+                              child: Text(s.continueButton)
                             ),
                             TextButton(
                               child: Text(s.cancelButton),
@@ -189,7 +191,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       // Using Navigator.push and waiting for the result
                       final result = await Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ChangeServerScreen())
+                          MaterialPageRoute(builder: (context) => const ChangeServerScreen())
                       );
 
                       // Check if the result is true and refresh server name if needed

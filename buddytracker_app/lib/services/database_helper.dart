@@ -3,7 +3,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import '../generated/l10n.dart';  // Localization
 
-
 class DatabaseHelper {
   static const _dbName = 'app.db';
   static const _dbVersion = 1;

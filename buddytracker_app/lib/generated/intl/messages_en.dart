@@ -42,6 +42,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "customServerHint": MessageLookupByLibrary.simpleMessage(
             "https://yourcustomserver.com"),
         "customServerLabel": MessageLookupByLibrary.simpleMessage("Server URL"),
+        "errorApiConnection": MessageLookupByLibrary.simpleMessage(
+            "Oh no something went wrong 😱\n\nCould not connect to the server. Please try again later."),
         "loginExisting": MessageLookupByLibrary.simpleMessage(
             "Log In with Existing Account"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
@@ -50,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noAccountFound": MessageLookupByLibrary.simpleMessage(
             "No existing account linked to this device."),
+        "noBuddiesFoundList": MessageLookupByLibrary.simpleMessage(
+            "No buddies found - how sad! 😢 \n\nTry adding some by clicking the \'+\' button below."),
         "officialServer":
             MessageLookupByLibrary.simpleMessage("Official Server"),
         "officialServerDev": MessageLookupByLibrary.simpleMessage(

@@ -4,6 +4,8 @@ import '../services/database_helper.dart';  // Database operations
 import '../services/api_service.dart';  // API operations
 
 class ChangeServerScreen extends StatefulWidget {
+  const ChangeServerScreen({super.key});
+
   @override
   _ChangeServerScreenState createState() => _ChangeServerScreenState();
 }
@@ -63,12 +65,12 @@ class _ChangeServerScreenState extends State<ChangeServerScreen> {
         S s = S.of(context);
         return Dialog(
           child: Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                CircularProgressIndicator(),
-                SizedBox(width: 20),
+                const CircularProgressIndicator(),
+                const SizedBox(width: 20),
                 Text(s.testingConnection),
               ],
             ),
